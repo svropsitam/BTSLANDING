@@ -66,6 +66,7 @@
       height: 100vh;
       background: #000;
       display: flex;
+      flex-direction: column; /* Елементи будуть розташовані вертикально */
       justify-content: center;
       align-items: center;
       z-index: 600;
@@ -77,6 +78,27 @@
       text-transform: uppercase;
       text-align: center;
       letter-spacing: 2px;
+    }
+    /* Стилізація SVG */
+    svg {
+      width: 100px;
+      height: 100px;
+    }
+    /* Анімація обертання для групи сегментів */
+    .rotating-group {
+      transform-origin: 50% 50%;
+      animation: rotate 12s linear infinite;
+    }
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    /* Єдиний стиль для полігонів та центрального кола */
+    polygon,
+    circle {
+      fill: none;
+      stroke: white;
+      stroke-width: 2;
     }
     
     
@@ -169,7 +191,7 @@
       background: rgba(0, 0, 0, 0.7);
       color: #fff;
       margin: var(--panel-gap) 0;
-      padding: 20px 20px 30px 20px;
+      padding: 20px 20px 55px 20px;
       text-align: center;
       border-radius: 8px;
       font-family: 'Impact', sans-serif;
@@ -497,7 +519,39 @@
 </head>
 <body>
   <!-- Передзавантажувальний екран -->
+   <!-- Передзавантажувальний екран -->
   <div id="preloader">
+    <svg viewBox="0 0 100 100">
+      <!-- Група сегментів (трапецій), що обертається -->
+      <g class="rotating-group">
+        <!-- Сегмент 0 (кути: -105° і -75°) -->
+        <polygon points="37.06,1.70 62.94,1.70 51.55,44.20 48.45,44.20"/>
+        <!-- Сегмент 1 (кути: -75° і -45°) -->
+        <polygon points="62.94,1.70 85.36,14.64 54.24,45.76 51.55,44.20"/>
+        <!-- Сегмент 2 (кути: -45° і -15°) -->
+        <polygon points="85.36,14.64 98.30,37.06 55.80,48.45 54.24,45.76"/>
+        <!-- Сегмент 3 (кути: -15° і 15°) -->
+        <polygon points="98.30,37.06 98.30,62.94 55.80,51.55 55.80,48.45"/>
+        <!-- Сегмент 4 (кути: 15° і 45°) -->
+        <polygon points="98.30,62.94 85.36,85.36 54.24,54.24 55.80,51.55"/>
+        <!-- Сегмент 5 (кути: 45° і 75°) -->
+        <polygon points="85.36,85.36 62.94,98.30 51.55,55.80 54.24,54.24"/>
+        <!-- Сегмент 6 (кути: 75° і 105°) -->
+        <polygon points="62.94,98.30 37.06,98.30 48.45,55.80 51.55,55.80"/>
+        <!-- Сегмент 7 (кути: 105° і 135°) -->
+        <polygon points="37.06,98.30 14.64,85.36 45.76,54.24 48.45,55.80"/>
+        <!-- Сегмент 8 (кути: 135° і 165°) -->
+        <polygon points="14.64,85.36 1.70,62.94 44.20,51.55 45.76,54.24"/>
+        <!-- Сегмент 9 (кути: 165° і 195°) -->
+        <polygon points="1.70,62.94 1.70,37.06 44.20,48.45 44.20,51.55"/>
+        <!-- Сегмент 10 (кути: 195° і 225°) -->
+        <polygon points="1.70,37.06 14.64,14.64 45.76,45.76 44.20,48.45"/>
+        <!-- Сегмент 11 (кути: 225° і 255°) -->
+        <polygon points="14.64,14.64 37.06,1.70 48.45,44.20 45.76,45.76"/>
+      </g>
+      <!-- Центральне коло з радіусом 6 (0.12 від зовнішнього діаметра) -->
+      <circle cx="50" cy="50" r="6"/>
+    </svg>
     <div class="loading-text">FRYPULIA INFINITY LOADING PLEASE WAIT</div>
   </div>
   
